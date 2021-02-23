@@ -11,3 +11,6 @@ class MyspiderItem(scrapy.Item):
     text = scrapy.Field()
     author = scrapy.Field()
     tags = scrapy.Field()
+    _id = scrapy.Field()
+    task_id = scrapy.Field()
+    ts = scrapy.Field()

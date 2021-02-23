@@ -25,11 +25,11 @@ class NextSpiderSpider(scrapy.Spider):
             item['author'] = author
             item['tags'] = tags
             # 将爬取的数据写成txt文件
-            with open(file_name, "a+") as f:  # 不同人的名言保存在不同的txt文档，“a+”以追加的形式
-                f.write(text)
-                f.write('\n')  # ‘\n’ 表示换行
-                f.write('标签：' + tags)
-                f.write('\n-------\n')
-                f.close()
+            # with open(file_name, "a+") as f:  # 不同人的名言保存在不同的txt文档，“a+”以追加的形式
+            #     f.write(text)
+            #     f.write('\n')  # ‘\n’ 表示换行
+            #     f.write('标签：' + tags)
+            #     f.write('\n-------\n')
+            #     f.close()
             # scrapy crawl nextSpider -o items.json -s FEED_EXPORT_ENCODING=UTF-8 将数据导出来序列化变成json格式
             yield item
