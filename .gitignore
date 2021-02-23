@@ -1,0 +1,10 @@
+project.egg-info/
+*.txt
+*.egg
+build/
+.project
+.settings/
+*.log*
+scrapyDemo/__pycache__/
+scrapyDemo/spiders/__pycache__/
+scrapyDemo/.idea/
