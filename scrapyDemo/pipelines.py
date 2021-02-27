@@ -9,25 +9,21 @@ from itemadapter import ItemAdapter
 # import json
 import os
 from pymongo import MongoClient
+
 mongo = MongoClient(
     host=os.environ.get('CRAWLAB_MONGO_HOST') or 'localhost',
     port=int(os.environ.get('CRAWLAB_MONGO_PORT') or 27017),
     username=os.environ.get('CRAWLAB_MONGO_USERNAME'),
     password=os.environ.get('CRAWLAB_MONGO_PASSWORD'),
-    # host='172.16.40.185',
-    # port=int(os.environ.get('CRAWLAB_MONGO_PORT') or 27017),
-    # username='admin',
-    # password='123456',
     authSource=os.environ.get('CRAWLAB_MONGO_AUTHSOURCE') or 'admin'
 )
 db = mongo[os.environ.get('CRAWLAB_MONGO_DB') or 'test']
 col = db[os.environ.get('CRAWLAB_COLLECTION') or 'test']
 task_id = os.environ.get('CRAWLAB_TASK_ID')
 
-
-class ScrapydemoPipeline:
+class ConfigSpiderPipeline(object):
     def process_item(self, item, spider):
-        item['task_id'] = '123'
+        item['task_id'] = task_id
         if col is not None:
             col.save(item)
         return item
